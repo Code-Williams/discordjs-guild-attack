@@ -1,5 +1,3 @@
-const { magenta, white } = require("chalk");
-
 module.exports = {
   name: "server-info",
   description: "Get information about server",
