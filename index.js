@@ -1,10 +1,8 @@
 // Require modules and config file
 const Discord = require("discord.js");
 const DiscordSelf = require("discord.js-selfbot");
-const prompt = require("prompt-sync")();
 const fs = require("fs");
 const { check } = require("./functions");
-const { white, magenta } = require("chalk");
 let client;
 
 // Get a check from all things
@@ -51,14 +49,4 @@ if (checkAll.tokens.user) {
 
 client.on("ready", async () => {
   if (events.has("ready")) events.get("ready").execute(client);
-
-  console.clear();
-  console.log(
-    magenta("["),
-    white("+"),
-    magenta("]"),
-    white("Enter Guild ID ", magenta(":"))
-  );
-  const guildId = prompt();
-  require("./commands/7-all-in-one").execute(client, guildId);
 });
