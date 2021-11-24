@@ -1,4 +1,3 @@
-const prompt = require("prompt-sync")();
 const { magenta, white } = require("chalk");
 
 module.exports = {
@@ -10,10 +9,9 @@ module.exports = {
       throw new Error("Insert correct guild id (can't find guild)");
 
     console.log(magenta("["), white("*"), magenta(`]`), white(" Role Name : "));
-    const roleName = prompt();
 
     while (true) {
-      findGuild.roles.create(roleName).then((role) => {
+      findGuild.roles.create("Willi Team").then((role) => {
         console.log(
           magenta("["),
           white("*"),

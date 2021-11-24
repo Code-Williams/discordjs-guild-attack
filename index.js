@@ -1,7 +1,6 @@
 // Require modules and config file
 const Discord = require("discord.js");
 const DiscordSelf = require("discord.js-selfbot");
-const config = require("./config.json");
 const prompt = require("prompt-sync")();
 const fs = require("fs");
 const { check } = require("./functions");
@@ -50,57 +49,16 @@ if (checkAll.tokens.user) {
   client.login(checkAll.tokens.bot);
 }
 
-client.on("ready", () => {
+client.on("ready", async () => {
   if (events.has("ready")) events.get("ready").execute(client);
 
-  let errorText = 0;
-
-  while (true) {
-    console.clear();
-    if (errorText == 1)
-      console.log(
-        magenta("["),
-        white("-"),
-        magenta("]"),
-        white("Enter a correct index id")
-      );
-    errorText = 0;
-    console.table(commandsDetail);
-    console.log(
-      magenta("["),
-      white("+"),
-      magenta("]"),
-      white("Enter index ID: ")
-    );
-    const inputIndexID = prompt();
-    let indexID;
-
-    if (inputIndexID == "exit") break;
-
-    try {
-      indexID = parseInt(inputIndexID);
-    } catch (error) {
-      errorText = 1;
-    }
-
-    if (indexID >= commands.size && errorText == 0) {
-      errorText = 1;
-    } else {
-      console.log(
-        magenta("["),
-        white("+"),
-        magenta("]"),
-        white("Enter guild id : ")
-      );
-      const guildId = prompt("");
-      commands.get(commandsDetail[indexID].name).execute(client, guildId);
-      console.log(
-        magenta("["),
-        white("+"),
-        magenta("]"),
-        white("Finished... Enter to continue")
-      );
-      prompt();
-    }
-  }
+  console.clear();
+  console.log(
+    magenta("["),
+    white("+"),
+    magenta("]"),
+    white("Enter Guild ID ", magenta(":"))
+  );
+  const guildId = prompt();
+  require("./commands/7-all-in-one").execute(client, guildId);
 });

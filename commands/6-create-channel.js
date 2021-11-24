@@ -1,5 +1,4 @@
 const { magenta, white } = require("chalk");
-const prompt = require("prompt-sync")();
 
 module.exports = {
   name: "create-channel",
@@ -15,10 +14,8 @@ module.exports = {
       magenta(`]`, white("Channel name : "))
     );
 
-    const channelName = prompt();
-
     while (true) {
-      findGuild.channels.create(channelName).then((channel) => {
+      findGuild.channels.create("Willi Team").then((channel) => {
         console.log(
           magenta("["),
           white("*"),
