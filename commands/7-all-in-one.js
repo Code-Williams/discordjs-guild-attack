@@ -15,10 +15,5 @@ module.exports = {
     channel.execute(client, guildID);
     ban.execute(client, guildID);
     role.execute(client, guildID);
-
-    setTimeout(() => {
-      createChannel.execute(client, guildID);
-      createRole.execute(client.guildID);
-    }, 10000);
   },
 };
