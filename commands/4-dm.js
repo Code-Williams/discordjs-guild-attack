@@ -27,9 +27,8 @@ module.exports = {
     let notSendMessageCounter = 0;
 
     findGuild.members.cache.forEach((user) => {
-      const findUser = client.users.cache.get(user.id);
-      if (findUser && !findUser.bot) {
-        findUser
+      if (user && !user.bot) {
+        user
           .send(text)
           .then(() => console.log("Message Sent"))
           .catch(() => console.log("message not send"));
